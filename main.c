@@ -72,7 +72,8 @@ void add(char *name, int age){ //: ユーザー追加
 	new_user = (struct member_list *)malloc(sizeof(struct member_list)); 
 	//挿入
 	new_user->age=age;
-	strcpy(new_user->name,name);
+	strncpy(new_user->name,name,size_of(new_user->name)-1);
+	new_user->name[sizeof(new_user->name) - 1] = '\0';
 	new_user->follow_head =NULL;
 	//登録
 	int user_hash=hash(new_user->name);
