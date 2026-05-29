@@ -83,9 +83,19 @@ void add(char *name, int age){ //: ユーザー追加
 }
 
 void follow(char *from, char *to){ //: 既存ユーザー間のフォロー関係構築
-
-
-
+	int from_hash = hash(from);
+	int to_hash = hash(to);
+	struct member_list *current=hashtable[from_hash];
+	if(current==NULL){
+		printf("failed in\n%s%s",from," ",to);	
+	}
+	else if(strcmp(current->name,from)==0){
+		current->follow_head=
+	}
+	else{
+		current=current->next;
+	}
+	
 }
 
 void unfollow(char *from, char *to){ //: フォロー解除（ノードの削除とメモリ解放）
